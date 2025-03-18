@@ -69,6 +69,15 @@ header nav ul {
     color: white;
 }
 
+div {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
+
 #referencias {
     display: flex;
     justify-content: center; 
