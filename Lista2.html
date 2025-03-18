@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Lista2.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" type="image/x-icon">
+    <title>Regra de Cramer - Questão 2</title>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li class="nav-link"><a href="#welcome-section">Início</a></li>
+                <li class="nav-link"><a href="#explicacao">Explicação</a></li>
+                <li class="nav-link"><a href="#codigo">Código</a></li>
+                <li class="nav-link"><a href="#referencias">Referências</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome-section">
+        <h1>Regra de Cramer - Resolução da Questão 2</h1>
+        <br>
+        <h2>Sistema de equações pela regra de Cramer</h2>
+    </section>
+
+    <section id="explicacao" class="container">
+        <h2>Explicação da Regra de Cramer</h2>
+        <p>A Regra de Cramer é um método matemático para resolver sistemas lineares, usando determinantes de matrizes do método Ax = B, primeiramente fazemos a determinante da matriz original A, após isso, substituimos cada coluna, uma a uma, pelos valores dos "resultados" B.</p>
+        <p>Nosso sistema de equações é:</p>
+        <pre>
+        4x -  y +  z =  8
+        2x + 5y + 2z = 3
+         x + 2y + 4z = 11
+        </pre>
+        <p>Podemos escrevê-lo na forma matricial <b>Ax = B</b>, onde:</p>
+        <pre>
+        A = |  4  -1   1  |    B = |  8  |
+            |  2   5   2  |        |  3  |
+            |  1   2   4  |        | 11  |
+        </pre>
+
+        <h3>1️ Passo: Calcular o determinante de A</h3>
+        <p>O determinante da matriz A, chamado de <b>det(A)</b>, é:</p>
+        <pre>
+        det(A) = 4*(5*4 - 2*2) - (-1)*(2*4 - 2*1) + 1*(2*2 - 5*1)
+               = 4*(20 - 4) + 1*(2 - 4) + 1*(4 - 5)
+               = 18
+        </pre>
+
+        <h3>2️ Passo: Criar as matrizes substituindo colunas</h3>
+        <p>Criamos três novas matrizes substituindo uma coluna de A pelo vetor B.</p>
+
+        <h4>Matriz Ax (substitui a primeira coluna por B)</h4>
+        <pre>
+        Ax = |  8  -1   1  |
+             |  3   5   2  |
+             | 11   2   4  |
+        </pre>
+        <p>O determinante é:</p>
+        <pre>
+        det(Ax) = 8*(5*4 - 2*2) - (-1)*(3*4 - 2*11) + 1*(3*2 - 5*11)
+                = 8*(20 - 4) + 1*(12 - 22) + 1*(6 - 55)
+                = -18
+        </pre>
+
+        <h4>Matriz Ay (substitui a segunda coluna por B)</h4>
+        <pre>
+        Ay = |  4   8   1  |
+             |  2   3   2  |
+             |  1  11   4  |
+        </pre>
+        <p>O determinante é:</p>
+        <pre>
+        det(Ay) = 4*(3*4 - 2*11) - 8*(2*4 - 2*1) + 1*(2*11 - 3*1)
+                = 4*(12 - 22) + 8*(8 - 2) + 1*(22 - 3)
+                = 18
+        </pre>
+
+        <h4>Matriz Az (substitui a terceira coluna por B)</h4>
+        <pre>
+        Az = |  4  -1   8  |
+             |  2   5   3  |
+             |  1   2  11  |
+        </pre>
+        <p>O determinante é:</p>
+        <pre>
+        det(Az) = 4*(5*11 - 3*2) - (-1)*(2*11 - 3*1) + 8*(2*3 - 5*1)
+                = 4*(55 - 6) + 1*(22 - 3) + 8*(6 - 5)
+                = 54
+        </pre>
+
+        <h3>3️ Passo: Calcular x, y e z</h3>
+        <pre>
+        x = det(Ax) / det(A) = (-18) / 18 = -1
+        y = det(Ay) / det(A) = (18) / 18 = 1
+        z = det(Az) / det(A) = (54) / 18 = 3
+        </pre>
+        <p>Portanto, a solução do sistema é <b>(x, y, z) = (-1, 1, 3)</b>.</p>
+    </section>
+
+    <section id="codigo" class="container">
+        <h2>Implementação em C#</h2>
+        <p>Abaixo está o código C# que implementa a Regra de Cramer para resolver esse sistema:</p>
+        <pre><code>
+using System;
+
+class Cramer
+{
+    static void Main()
+    {
+        double[,] A = { { 4, -1, 1 }, { 2, 5, 2 }, { 1, 2, 4 } };
+        double[] B = { 8, 3, 11 };
+
+        double Det(double[,] m) =>
+            m[0,0] * (m[1,1] * m[2,2] - m[1,2] * m[2,1]) -
+            m[0,1] * (m[1,0] * m[2,2] - m[1,2] * m[2,0]) +
+            m[0,2] * (m[1,0] * m[2,1] - m[1,1] * m[2,0]);
+
+        double d = Det(A);
+        if (d == 0) { Console.WriteLine("Sistema sem solução única."); return; }
+
+        double[,] Ax = { { B[0], A[0,1], A[0,2] }, { B[1], A[1,1], A[1,2] }, { B[2], A[2,1], A[2,2] } };
+        double[,] Ay = { { A[0,0], B[0], A[0,2] }, { A[1,0], B[1], A[1,2] }, { A[2,0], B[2], A[2,2] } };
+        double[,] Az = { { A[0,0], A[0,1], B[0] }, { A[1,0], A[1,1], B[1] }, { A[2,0], A[2,1], B[2] } };
+
+        Console.WriteLine($"x1 = {Det(Ax) / d:F2}");
+        Console.WriteLine($"x2 = {Det(Ay) / d:F2}");
+        Console.WriteLine($"x3 = {Det(Az) / d:F2}");
+    }
+}
+        </code></pre>
+    </section>
+
+    <section id="referencias">
+        <h2>Referências:</h2>
+        <p>Aulas da professora Juliana
+            <br>
+            Video-aula: <a href="https://www.youtube.com/watch?v=cCCtrZ806Js" target="_blank">link aqui</a>
+            <br>
+            "Numerical Analysis" - Richard L. Burden, J. Douglas Faires
+        </p>
+    </section>
+
+    <footer>&copy;Inventors 2025</footer>
+</body>
+</html>
