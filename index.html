@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Lista2.css">
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" type="image/x-icon">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Lista2.css" />
+    <link
+      rel="icon"
+      href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+      type="image/x-icon"
+    />
     <title>Lista 2</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav id="navbar">
-            <ul>
-                <li class="nav-link"><a href="#questao_1">Questão 1</a></li>
-                <li class="nav-link"><a href="#questao_2">Questão 2</a></li>
-                <li class="nav-link"><a href="#questao_3">Questão 3</a></li>
-                <li class="nav-link"><a href="#questao_4">Questão 4</a></li>
-                <li class="nav-link"><a href="#questao_5">Questão 5</a></li>
-                <li class="nav-link"><a href="#questao_6">Questão 6</a></li>
-                <li class="nav-link"><a href="#questao_7">Questão 7</a></li>
-                <li class="nav-link"><a href="#referencias">Referências</a></li>
-            </ul>
-        </nav>
+      <nav id="navbar">
+        <ul>
+          <li class="nav-link"><a href="#questao_1">Questão 1</a></li>
+          <li class="nav-link"><a href="#questao_2">Questão 2</a></li>
+          <li class="nav-link"><a href="#questao_3">Questão 3</a></li>
+          <li class="nav-link"><a href="#questao_4">Questão 4</a></li>
+          <li class="nav-link"><a href="#questao_5">Questão 5</a></li>
+          <li class="nav-link"><a href="#questao_6">Questão 6</a></li>
+          <li class="nav-link"><a href="#questao_7">Questão 7</a></li>
+          <li class="nav-link"><a href="#referencias">Referências</a></li>
+        </ul>
+      </nav>
     </header>
 
     <section id="questao_1">
-        <h1>Questão 1</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>
-            A Regra de Cramer baseia-se no cálculo de determinantes, primeiro obtemos o determinante da matriz original e então substitui-se cada coluna da matriz pelos valores do vetor dos termos independentes e calcula-se os determinantes resultantes, cada incógnita é obtida pela razão entre o determinante da matriz modificada e o determinante da matriz original (dx/dA). Esse método é eficiente para sistemas pequenos, mas torna-se impraticável para matrizes grandes devido ao alto custo computacional.
-
-            A Eliminação de Gauss transforma a matriz original em uma matriz triangular superior por meio de operações elementares sobre as linhas, depois utilizamos a substituição regressiva para encontrar os valores das incógnitas, geralmente é utilizado devido à sua simplicidade e eficiência computacional.
-            
-            A Decomposição LU fatora a matriz original em duas matrizes triangulares: uma inferior e outra superior, primeiramente, resolve-se um sistema intermediário usando substituição progressiva e, em seguida, encontra-se a solução final aplicando substituição regressiva, esse método é útil em problemas que exigem a resolução de múltiplos sistemas lineares com a mesma matriz de coeficientes, pois permite reutilizar a fatoração.</p>
+      <h1>Questão 1</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        A Regra de Cramer baseia-se no cálculo de determinantes, primeiro
+        obtemos o determinante da matriz original e então substitui-se cada
+        coluna da matriz pelos valores do vetor dos termos independentes e
+        calcula-se os determinantes resultantes, cada incógnita é obtida pela
+        razão entre o determinante da matriz modificada e o determinante da
+        matriz original (dAx/dA). Esse método é eficiente para sistemas pequenos,
+        mas torna-se impraticável para matrizes grandes devido ao alto custo
+        computacional. A Eliminação de Gauss transforma a matriz original em uma
+        matriz triangular superior por meio de operações elementares sobre as
+        linhas, depois utilizamos a substituição regressiva para encontrar os
+        valores das incógnitas, geralmente é utilizado devido à sua simplicidade
+        e eficiência computacional. A Decomposição LU fatora a matriz original
+        em duas matrizes triangulares: uma inferior e outra superior,
+        primeiramente, resolve-se um sistema intermediário usando substituição
+        progressiva e, em seguida, encontra-se a solução final aplicando
+        substituição regressiva, esse método é útil em problemas que exigem a
+        resolução de múltiplos sistemas lineares com a mesma matriz de
+        coeficientes, pois permite reutilizar a fatoração.
+      </p>
     </section>
 
     <section id="questao_2">
-        <h1>Questão 2</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>
-            Acabei considerando a explcicação da 2 desnecessária, já que acabei respondendo na 1, principalmente a funcionalidade delas.
-        </p>
-        <h2>Implementação em C#</h2>
-        <pre><code>
+      <h1>Questão 2</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        Acabei considerando a explcicação da 2 desnecessária, já que acabei
+        respondendo na 1, principalmente a funcionalidade delas.
+      </p>
+      <h2>Implementação em C#</h2>
+      <pre><code>
             using System;
 
             class SistemasLineares
@@ -175,27 +194,70 @@
                 }
             }            
         </code></pre>
+      <pre>
+        Saída:
+            Resolvendo pelo Método de Cramer:
+                x1 = 1,00
+                x2 = -1,00
+                x3 = 3,00
+
+                Resolvendo pela Eliminação de Gauss:
+                x1 = 1,00
+                x2 = -1,00
+                x3 = 3,00
+
+                Resolvendo pela Decomposição LU:
+                x1 = 1,00
+                x2 = -1,00
+                x3 = 3,00
+        </pre
+      >
     </section>
 
     <section id="questao_3">
-        <h1>Questão 3</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>
-            O método de Jacobi resolve sistemas lineares de forma iterativa, aproximando os valores das incógnitas até atingir um critério de convergência, o processo começa reorganizando cada equação para isolar uma variável em relação às demais, a partir de um chute inicial, são realizadas iterações sucessivas onde cada incógnita é recalculada utilizando apenas os valores da iteração anterior, ele continua até que a diferença entre as iterações seja menor que uma tolerância pré-estabelecida, garantindo uma solução suficientemente precisa.
-
-            Já o método de Gauss-Seidel segue uma lógica semelhante, mas com uma diferença: a medida que uma incógnita é recalculada, seu novo valor é imediatamente utilizado no cálculo das próximas variáveis, isso faz com que o método geralmente convirja mais rápido do que o de Jacobi, já que acaba incorporando as atualizações mais recentes dentro da própria iteração, o critério de parada é baseado na diferença entre os valores calculados em iterações consecutivas, assegurando que o erro seja menor do que a tolerância definida.
-            
-            O método de Gauss-Seidel costuma ser mais eficiente, pois aproveita melhor as informações disponíveis a cada passo, porém sua implementação não permite paralelização tão facilmente quanto o método de Jacobi, já que as atualizações ocorrem de forma sequencial.</p>
+      <h1>Questão 3</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        O método de Jacobi resolve sistemas lineares de forma iterativa,
+        aproximando os valores das incógnitas até atingir um critério de
+        convergência, o processo começa reorganizando cada equação para isolar
+        uma variável em relação às demais, a partir de um chute inicial, são
+        realizadas iterações sucessivas onde cada incógnita é recalculada
+        utilizando apenas os valores da iteração anterior, ele continua até que
+        a diferença entre as iterações seja menor que uma tolerância
+        pré-estabelecida, garantindo uma solução suficientemente precisa. Já o
+        método de Gauss-Seidel segue uma lógica semelhante, mas com uma
+        diferença: a medida que uma incógnita é recalculada, seu novo valor é
+        imediatamente utilizado no cálculo das próximas variáveis, isso faz com
+        que o método geralmente convirja mais rápido do que o de Jacobi, já que
+        acaba incorporando as atualizações mais recentes dentro da própria
+        iteração, o critério de parada é baseado na diferença entre os valores
+        calculados em iterações consecutivas, assegurando que o erro seja menor
+        do que a tolerância definida. O método de Gauss-Seidel costuma ser mais
+        eficiente, pois aproveita melhor as informações disponíveis a cada
+        passo, porém sua implementação não permite paralelização tão facilmente
+        quanto o método de Jacobi, já que as atualizações ocorrem de forma
+        sequencial.
+      </p>
     </section>
-    
+
     <section id="questao_4">
-        <h1>Questão 4</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>Primeiro verificamos se o sistema satisfaz critérios que garantem a convergência dos métodos iterativos, então utilizando o método de Jacobi e Gauss-Seidel para encontrar a solução aproximada, no qual o Jacobi, atualizamos os valores das incógnitas separadamente em cada iteração, enquanto no Gauss-Seidel usamos os novos valores à medida que são calculados, o processo continua até que a variação entre as iterações seja suficientemente pequena, garantindo que a solução encontrada esteja dentro da tolerância desejada.</p>
-        <h2>Implementação em C#</h2>
-        <pre><code>
+      <h1>Questão 4</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        Primeiro verificamos se o sistema satisfaz critérios que garantem a
+        convergência dos métodos iterativos, então utilizando o método de Jacobi
+        e Gauss-Seidel para encontrar a solução aproximada, no qual o Jacobi,
+        atualizamos os valores das incógnitas separadamente em cada iteração,
+        enquanto no Gauss-Seidel usamos os novos valores à medida que são
+        calculados, o processo continua até que a variação entre as iterações
+        seja suficientemente pequena, garantindo que a solução encontrada esteja
+        dentro da tolerância desejada.
+      </p>
+      <h2>Implementação em C#</h2>
+      <pre><code>
             using System;
 
             class MetodoIterativo
@@ -273,15 +335,36 @@
             }
             
         </code></pre>
+      <pre>
+        Saída:
+            Resolvendo pelo Método de Jacobi:
+                x1 = 0,999401
+                x2 = 0,997064
+                x3 = 0,000796
+
+                Resolvendo pelo Método de Gauss-Seidel:
+                x1 = 1,001015
+                x2 = 0,999856
+                x3 = -0,000246
+        </pre
+      >
     </section>
 
     <section id="questao_5">
-        <h1>Questão 5</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>Resolvemos um sistema linear estimando os valores das incógnitas de forma independente a cada iteração, após um chute inicial e usamos as equações do sistema para atualizar cada variável, sempre considerando os valores antigos das demais, o processo é repetido até que as mudanças entre as iterações sejam pequenas o suficiente para garantir uma boa aproximação, com issochegamos à solução correta do sistema de forma gradual e sistemática.</p>
-        <h2>Implementação em C#</h2>
-        <pre><code>
+      <h1>Questão 5</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        Resolvemos um sistema linear estimando os valores das incógnitas de
+        forma independente a cada iteração, após um chute inicial e usamos as
+        equações do sistema para atualizar cada variável, sempre considerando os
+        valores antigos das demais, o processo é repetido até que as mudanças
+        entre as iterações sejam pequenas o suficiente para garantir uma boa
+        aproximação, com issochegamos à solução correta do sistema de forma
+        gradual e sistemática.
+      </p>
+      <h2>Implementação em C#</h2>
+      <pre><code>
 
             class Jacobi
             {
@@ -322,15 +405,29 @@
                 }
             }
         </code></pre>
+        <pre>
+            Saída:
+                x1 = 1,000236
+                x2 = -1,998936
+                x3 = 1,000284
+        </pre>
     </section>
 
     <section id="questao_6">
-        <h1>Questão 6</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>Utilizamos o método iterativo de Gauss-Seidel e começamos com uma estimativa inicial para as variáveis e para cada iteração, atualizamos seus valores com base nas equações do sistema, sempre usando os valores mais recentes disponíveis, o processo continua até que a diferença entre as iterações seja menor que a tolerância especificada, assim acabamos encontramos a solução aproximada do sistema, que corresponde aos valores esperados.</p>
-        <h2>Implementação em C#</h2>
-        <pre><code>
+      <h1>Questão 6</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        Utilizamos o método iterativo de Gauss-Seidel e começamos com uma
+        estimativa inicial para as variáveis e para cada iteração, atualizamos
+        seus valores com base nas equações do sistema, sempre usando os valores
+        mais recentes disponíveis, o processo continua até que a diferença entre
+        as iterações seja menor que a tolerância especificada, assim acabamos
+        encontramos a solução aproximada do sistema, que corresponde aos valores
+        esperados.
+      </p>
+      <h2>Implementação em C#</h2>
+      <pre><code>
             class Questao6
             {
                 static void Main()
@@ -364,78 +461,103 @@
                 }
             }
         </code></pre>
+        <pre>
+            Saída:
+                x1 = 1,001625
+                x2 = 0,998625
+                x3 = -1,000125
+        </pre>
     </section>
 
     <section id="questao_7">
-        <h1>Questão 7</h1>
-        <br>
-        <h2>Explicação</h2>
-        <p>Para resolver essa questão, precisamos encontrar um polinômio de quarto grau que passe pelos cinco pontos fornecidos, ou seja, ao substituir cada valor de x na equação do polinômio, o resultado deve ser o valor correspondente de y, após isso formamos um sistema de cinco equações com cinco incógnitas. Para resolver esse sistema, usamos o método de Gauss-Seidel, que começa com uma estimativa inicial e ajusta os valores aos poucos até chegar a uma resposta precisa, então encontramos os coeficientes do polinômio que melhor se ajustam aos pontos dados.</p>
-        <h2>Implementação em C#</h2>
-        <pre><code>
-            using System;
+      <h1>Questão 7</h1>
+      <br />
+      <h2>Explicação</h2>
+      <p>
+        Para resolver o problema e encontrar um polinômio de quarto grau que passe pelos cinco pontos fornecidos, utilizamos um sistema de equações lineares, o polinômio procurado tem cinco coeficientes desconhecidos, que precisam ser determinados, usando a eliminação de Gauss para resolver esse sistema construímos uma matriz onde cada linha corresponde a uma equação baseada nos pontos fornecidos, então aplicamos a eliminação de Gauss para transformar a matriz em uma forma mais simples, e usamos a substituição regressiva para encontrar os valores dos coeficientes do polinômio.
+      </p>
+      <h2>Implementação em C#</h2>
+      <pre><code>
+        using System;
 
-            class GaussSeidel
+        class EliminacaoDeGauss
+        {
+            static void Main()
             {
-                static void Main()
+                // Matriz dos coeficientes
+                double[,] A = {
+                    { Math.Pow(0,4), Math.Pow(0,3), Math.Pow(0,2), 0, 1 },  // x = 0, y = -1
+                    { Math.Pow(1,4), Math.Pow(1,3), Math.Pow(1,2), 1, 1 },  // x = 1, y = 1
+                    { Math.Pow(3,4), Math.Pow(3,3), Math.Pow(3,2), 3, 1 },  // x = 3, y = 3
+                    { Math.Pow(5,4), Math.Pow(5,3), Math.Pow(5,2), 5, 1 },  // x = 5, y = 2
+                    { Math.Pow(6,4), Math.Pow(6,3), Math.Pow(6,2), 6, 1 }   // x = 6, y = -2
+                };
+        
+                double[] B = { -1, 1, 3, 2, -2 };
+        
+                int n = B.Length;
+        
+                for (int i = 0; i &lt; n; i++)
                 {
-                    // Matriz dos coeficientes
-                    double[,] A = {
-                        { Math.Pow(0,4), Math.Pow(0,3), Math.Pow(0,2), 0, 1 },  // x = 0, y = -1
-                        { Math.Pow(1,4), Math.Pow(1,3), Math.Pow(1,2), 1, 1 },  // x = 1, y = 1
-                        { Math.Pow(3,4), Math.Pow(3,3), Math.Pow(3,2), 3, 1 },  // x = 3, y = 3
-                        { Math.Pow(5,4), Math.Pow(5,3), Math.Pow(5,2), 5, 1 },  // x = 5, y = 2
-                        { Math.Pow(6,4), Math.Pow(6,3), Math.Pow(6,2), 6, 1 }   // x = 6, y = -2
-                    };
-            
-                    // Vetor dos termos independentes
-                    double[] B = { -1, 1, 3, 2, -2 };
-            
-                    // Valores iniciais
-                    double[] X = new double[5];
-                    double tol = 1e-6;
-                    int maxIter = 1000;
-                    int n = B.Length;
-            
-                    // Método de Gauss-Seidel
-                    for (int k = 0; k &lt; maxIter; k++)
+                    for (int k = i + 1; k &lt; n; k++)
                     {
-                        double[] X_old = (double[])X.Clone();
-                        for (int i = 0; i &lt; n; i++)
+                        if (Math.Abs(A[k, i]) > Math.Abs(A[i, i]))
                         {
-                            double sum = B[i];
                             for (int j = 0; j &lt; n; j++)
                             {
-                                if (j != i)
-                                    sum -= A[i, j] * X[j];
+                                double temp = A[i, j];
+                                A[i, j] = A[k, j];
+                                A[k, j] = temp;
                             }
-                            X[i] = sum / A[i, i];
+                            double tempB = B[i];
+                            B[i] = B[k];
+                            B[k] = tempB;
                         }
-            
-                        // Verificar convergência
-                        double error = 0;
-                        for (int i = 0; i &lt; n; i++)
-                            error += Math.Abs(X[i] - X_old[i]);
-            
-                        if (error &lt; tol) break;
                     }
-            
-                    // Exibir solução
-                    Console.WriteLine($"Polinômio encontrado: y(x) = {X[0]:F4}x^4 + {X[1]:F4}x^3 + {X[2]:F4}x^2 + {X[3]:F4}x + {X[4]:F4}");
+        
+                    for (int k = i + 1; k &lt; n; k++)
+                    {
+                        double factor = A[k, i] / A[i, i];
+                        for (int j = i; j &lt; n; j++)
+                        {
+                            A[k, j] -= factor * A[i, j];
+                        }
+                        B[k] -= factor * B[i];
+                    }
                 }
+        
+                double[] X = new double[n];
+                for (int i = n - 1; i >= 0; i--)
+                {
+                    X[i] = B[i];
+                    for (int j = i + 1; j &lt; n; j++)
+                    {
+                        X[i] -= A[i, j] * X[j];
+                    }
+                    X[i] /= A[i, i];
+                }
+        
+                Console.WriteLine($"Polinômio encontrado: y(x) = {X[0]:F4}x^4 + {X[1]:F4}x^3 + {X[2]:F4}x^2 + {X[3]:F4}x + {X[4]:F4}");
             }
+        }        
             
         </code></pre>
     </section>
 
     <section id="referencias">
-        <h2>Referências:</h2>
-        <p>Aulas da professora Juliana
-            <br>
-            Video-aula: <a href="https://www.youtube.com/watch?v=cCCtrZ806Js" target="_blank">link aqui</a>
-            <br>
-            "Numerical Analysis" - Richard L. Burden, J. Douglas Faires
-        </p>
+      <h2>Referências:</h2>
+      <p>
+        Aulas da professora Juliana
+        <br />
+        Video-aula:
+        <a href="https://www.youtube.com/watch?v=cCCtrZ806Js" target="_blank"
+          >link aqui</a
+        >
+        <br />
+        "Numerical Analysis" - Richard L. Burden, J. Douglas Faires
+        <br>
+        "Cálculo Numérico" - RUGGIERO, M. A. G.; LOPES, V. L. R.
+      </p>
     </section>
-</body>
+  </body>
 </html>
