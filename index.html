@@ -5,134 +5,426 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Lista2.css">
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" type="image/x-icon">
-    <title>Regra de Cramer - Questão 2</title>
+    <title>Lista 2</title>
 </head>
 <body>
     <header>
         <nav id="navbar">
             <ul>
-                <li class="nav-link"><a href="#welcome-section">Início</a></li>
-                <li class="nav-link"><a href="#explicacao">Explicação</a></li>
-                <li class="nav-link"><a href="#codigo">Código</a></li>
+                <li class="nav-link"><a href="#questao_1">Questão 1</a></li>
+                <li class="nav-link"><a href="#questao_2">Questão 2</a></li>
+                <li class="nav-link"><a href="#questao_3">Questão 3</a></li>
+                <li class="nav-link"><a href="#questao_4">Questão 4</a></li>
+                <li class="nav-link"><a href="#questao_5">Questão 5</a></li>
+                <li class="nav-link"><a href="#questao_6">Questão 6</a></li>
+                <li class="nav-link"><a href="#questao_7">Questão 7</a></li>
                 <li class="nav-link"><a href="#referencias">Referências</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="welcome-section">
-        <h1>Regra de Cramer - Resolução da Questão 2</h1>
+    <section id="questao_1">
+        <h1>Questão 1</h1>
         <br>
-        <h2>Sistema de equações pela regra de Cramer</h2>
+        <h2>Explicação</h2>
+        <p>
+            A Regra de Cramer baseia-se no cálculo de determinantes, primeiro obtemos o determinante da matriz original e então substitui-se cada coluna da matriz pelos valores do vetor dos termos independentes e calcula-se os determinantes resultantes, cada incógnita é obtida pela razão entre o determinante da matriz modificada e o determinante da matriz original (dx/dA). Esse método é eficiente para sistemas pequenos, mas torna-se impraticável para matrizes grandes devido ao alto custo computacional.
+
+            A Eliminação de Gauss transforma a matriz original em uma matriz triangular superior por meio de operações elementares sobre as linhas, depois utilizamos a substituição regressiva para encontrar os valores das incógnitas, geralmente é utilizado devido à sua simplicidade e eficiência computacional.
+            
+            A Decomposição LU fatora a matriz original em duas matrizes triangulares: uma inferior e outra superior, primeiramente, resolve-se um sistema intermediário usando substituição progressiva e, em seguida, encontra-se a solução final aplicando substituição regressiva, esse método é útil em problemas que exigem a resolução de múltiplos sistemas lineares com a mesma matriz de coeficientes, pois permite reutilizar a fatoração.</p>
     </section>
 
-    <section id="explicacao" class="container">
-        <h2>Explicação da Regra de Cramer</h2>
-        <div class="gif-container">
-            <img src="https://www.chilimath.com/wp-content/uploads/2017/07/animated-formula-determinant-3x3-matrix.gif" alt="Determinante de matriz 3x3">
-        </div>
-        <p>A Regra de Cramer é um método matemático para resolver sistemas lineares, usando determinantes de matrizes do método Ax = B, primeiramente fazemos a determinante da matriz original A, após isso, substituimos cada coluna, uma a uma, pelos valores dos "resultados" B.</p>
-        <p>Nosso sistema de equações é:</p>
-        <pre>
-        4x -  y +  z =  8
-        2x + 5y + 2z = 3
-         x + 2y + 4z = 11
-        </pre>
-        <p>Podemos escrevê-lo na forma matricial <b>Ax = B</b>, onde:</p>
-        <pre>
-        A = |  4  -1   1  |    B = |  8  |
-            |  2   5   2  |        |  3  |
-            |  1   2   4  |        | 11  |
-        </pre>
-
-        <h3>1️ Passo: Calcular o determinante de A</h3>
-        <p>O determinante da matriz A, chamado de <b>det(A)</b>, é:</p>
-        <pre>
-        det(A) = 4*(5*4 - 2*2) - (-1)*(2*4 - 2*1) + 1*(2*2 - 5*1)
-               = 4*(20 - 4) + 1*(2 - 4) + 1*(4 - 5)
-               = 18
-        </pre>
-
-        <h3>2️ Passo: Criar as matrizes substituindo colunas</h3>
-        <p>Criamos três novas matrizes substituindo uma coluna de A pelo vetor B.</p>
-
-        <h4>Matriz Ax (substitui a primeira coluna por B)</h4>
-        <pre>
-        Ax = |  8  -1   1  |
-             |  3   5   2  |
-             | 11   2   4  |
-        </pre>
-        <p>O determinante é:</p>
-        <pre>
-        det(Ax) = 8*(5*4 - 2*2) - (-1)*(3*4 - 2*11) + 1*(3*2 - 5*11)
-                = 8*(20 - 4) + 1*(12 - 22) + 1*(6 - 55)
-                = -18
-        </pre>
-
-        <h4>Matriz Ay (substitui a segunda coluna por B)</h4>
-        <pre>
-        Ay = |  4   8   1  |
-             |  2   3   2  |
-             |  1  11   4  |
-        </pre>
-        <p>O determinante é:</p>
-        <pre>
-        det(Ay) = 4*(3*4 - 2*11) - 8*(2*4 - 2*1) + 1*(2*11 - 3*1)
-                = 4*(12 - 22) + 8*(8 - 2) + 1*(22 - 3)
-                = 18
-        </pre>
-
-        <h4>Matriz Az (substitui a terceira coluna por B)</h4>
-        <pre>
-        Az = |  4  -1   8  |
-             |  2   5   3  |
-             |  1   2  11  |
-        </pre>
-        <p>O determinante é:</p>
-        <pre>
-        det(Az) = 4*(5*11 - 3*2) - (-1)*(2*11 - 3*1) + 8*(2*3 - 5*1)
-                = 4*(55 - 6) + 1*(22 - 3) + 8*(6 - 5)
-                = 54
-        </pre>
-
-        <h3>3️ Passo: Calcular x, y e z</h3>
-        <pre>
-        x = det(Ax) / det(A) = (-18) / 18 = -1
-        y = det(Ay) / det(A) = (18) / 18 = 1
-        z = det(Az) / det(A) = (54) / 18 = 3
-        </pre>
-        <p>Portanto, a solução do sistema é <b>(x, y, z) = (-1, 1, 3)</b>.</p>
-    </section>
-
-    <section id="codigo" class="container">
+    <section id="questao_2">
+        <h1>Questão 2</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>
+            Acabei considerando a explcicação da 2 desnecessária, já que acabei respondendo na 1, principalmente a funcionalidade delas.
+        </p>
         <h2>Implementação em C#</h2>
-        <p>Abaixo está o código C# que implementa a Regra de Cramer para resolver esse sistema:</p>
         <pre><code>
-using System;
+            using System;
 
-class Cramer
-{
-    static void Main()
-    {
-        double[,] A = { { 4, -1, 1 }, { 2, 5, 2 }, { 1, 2, 4 } };
-        double[] B = { 8, 3, 11 };
+            class SistemasLineares
+            {
+                static void Main()
+                {
+                    double[,] A = { { 4, -1, 1 }, { 2, 5, 2 }, { 1, 2, 4 } };
+                    double[] B = { 8, 3, 11 };
+            
+                    Console.WriteLine("Resolvendo pelo Método de Cramer:");
+                    MetodoCramer(A, B);
+            
+                    Console.WriteLine("\nResolvendo pela Eliminação de Gauss:");
+                    EliminacaoDeGauss(A, B);
+            
+                    Console.WriteLine("\nResolvendo pela Decomposição LU:");
+                    DecomposicaoLU(A, B);
+                }
+            
+                static void MetodoCramer(double[,] A, double[] B)
+                {
+                    double Det(double[,] m) =>
+                        m[0,0] * (m[1,1] * m[2,2] - m[1,2] * m[2,1]) -
+                        m[0,1] * (m[1,0] * m[2,2] - m[1,2] * m[2,0]) +
+                        m[0,2] * (m[1,0] * m[2,1] - m[1,1] * m[2,0]);
+            
+                    double d = Det(A);
+                    if (d == 0) { Console.WriteLine("Sistema sem solução única."); return; }
+            
+                    double[,] Ax = { { B[0], A[0,1], A[0,2] }, { B[1], A[1,1], A[1,2] }, { B[2], A[2,1], A[2,2] } };
+                    double[,] Ay = { { A[0,0], B[0], A[0,2] }, { A[1,0], B[1], A[1,2] }, { A[2,0], B[2], A[2,2] } };
+                    double[,] Az = { { A[0,0], A[0,1], B[0] }, { A[1,0], A[1,1], B[1] }, { A[2,0], A[2,1], B[2] } };
+            
+                    Console.WriteLine($"x1 = {Det(Ax) / d:F2}");
+                    Console.WriteLine($"x2 = {Det(Ay) / d:F2}");
+                    Console.WriteLine($"x3 = {Det(Az) / d:F2}");
+                }
+            
+                static void EliminacaoDeGauss(double[,] A, double[] B)
+                {
+                    int n = B.Length;
+                    double[,] matriz = new double[n, n + 1];
+            
+                    // Montar a matriz aumentada [A|B]
+                    for (int i = 0; i &lt; n; i++)
+                    {
+                        for (int j = 0; j &lt; n; j++)
+                            matriz[i, j] = A[i, j];
+                        matriz[i, n] = B[i];
+                    }
+            
+                    // Eliminação de Gauss
+                    for (int i = 0; i &lt; n; i++)
+                    {
+                        // Pivoteamento parcial
+                        for (int k = i + 1; k &lt; n; k++)
+                        {
+                            double fator = matriz[k, i] / matriz[i, i];
+                            for (int j = i; j &lt;= n; j++)
+                                matriz[k, j] -= fator * matriz[i, j];
+                        }
+                    }
+            
+                    // Substituição regressiva
+                    double[] X = new double[n];
+                    for (int i = n - 1; i >= 0; i--)
+                    {
+                        X[i] = matriz[i, n];
+                        for (int j = i + 1; j &lt; n; j++)
+                            X[i] -= matriz[i, j] * X[j];
+                        X[i] /= matriz[i, i];
+                    }
+            
+                    // Exibir resultado
+                    for (int i = 0; i &lt; n; i++)
+                        Console.WriteLine($"x{i + 1} = {X[i]:F2}");
+                }
+            
+                static void DecomposicaoLU(double[,] A, double[] B)
+                {
+                    int n = B.Length;
+                    double[,] L = new double[n, n];
+                    double[,] U = new double[n, n];
+            
+                    // Inicializando L como identidade e U como A
+                    for (int i = 0; i &lt; n; i++)
+                    {
+                        for (int j = 0; j &lt; n; j++)
+                        {
+                            U[i, j] = A[i, j];
+                            L[i, j] = (i == j) ? 1 : 0;
+                        }
+                    }
+            
+                    // Decomposição LU
+                    for (int i = 0; i &lt; n; i++)
+                    {
+                        for (int k = i + 1; k &lt; n; k++)
+                        {
+                            double fator = U[k, i] / U[i, i];
+                            L[k, i] = fator;
+                            for (int j = i; j &lt; n; j++)
+                                U[k, j] -= fator * U[i, j];
+                        }
+                    }
+            
+                    // Resolver Ly = B (substituição progressiva)
+                    double[] Y = new double[n];
+                    for (int i = 0; i &lt; n; i++)
+                    {
+                        Y[i] = B[i];
+                        for (int j = 0; j &lt; i; j++)
+                            Y[i] -= L[i, j] * Y[j];
+                    }
+            
+                    // Resolver Ux = Y (substituição regressiva)
+                    double[] X = new double[n];
+                    for (int i = n - 1; i >= 0; i--)
+                    {
+                        X[i] = Y[i];
+                        for (int j = i + 1; j &lt; n; j++)
+                            X[i] -= U[i, j] * X[j];
+                        X[i] /= U[i, i];
+                    }
+            
+                    // Exibir resultado
+                    for (int i = 0; i &lt; n; i++)
+                        Console.WriteLine($"x{i + 1} = {X[i]:F2}");
+                }
+            }            
+        </code></pre>
+    </section>
 
-        double Det(double[,] m) =>
-            m[0,0] * (m[1,1] * m[2,2] - m[1,2] * m[2,1]) -
-            m[0,1] * (m[1,0] * m[2,2] - m[1,2] * m[2,0]) +
-            m[0,2] * (m[1,0] * m[2,1] - m[1,1] * m[2,0]);
+    <section id="questao_3">
+        <h1>Questão 3</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>
+            O método de Jacobi resolve sistemas lineares de forma iterativa, aproximando os valores das incógnitas até atingir um critério de convergência, o processo começa reorganizando cada equação para isolar uma variável em relação às demais, a partir de um chute inicial, são realizadas iterações sucessivas onde cada incógnita é recalculada utilizando apenas os valores da iteração anterior, ele continua até que a diferença entre as iterações seja menor que uma tolerância pré-estabelecida, garantindo uma solução suficientemente precisa.
 
-        double d = Det(A);
-        if (d == 0) { Console.WriteLine("Sistema sem solução única."); return; }
+            Já o método de Gauss-Seidel segue uma lógica semelhante, mas com uma diferença: a medida que uma incógnita é recalculada, seu novo valor é imediatamente utilizado no cálculo das próximas variáveis, isso faz com que o método geralmente convirja mais rápido do que o de Jacobi, já que acaba incorporando as atualizações mais recentes dentro da própria iteração, o critério de parada é baseado na diferença entre os valores calculados em iterações consecutivas, assegurando que o erro seja menor do que a tolerância definida.
+            
+            O método de Gauss-Seidel costuma ser mais eficiente, pois aproveita melhor as informações disponíveis a cada passo, porém sua implementação não permite paralelização tão facilmente quanto o método de Jacobi, já que as atualizações ocorrem de forma sequencial.</p>
+    </section>
+    
+    <section id="questao_4">
+        <h1>Questão 4</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>Primeiro verificamos se o sistema satisfaz critérios que garantem a convergência dos métodos iterativos, então utilizando o método de Jacobi e Gauss-Seidel para encontrar a solução aproximada, no qual o Jacobi, atualizamos os valores das incógnitas separadamente em cada iteração, enquanto no Gauss-Seidel usamos os novos valores à medida que são calculados, o processo continua até que a variação entre as iterações seja suficientemente pequena, garantindo que a solução encontrada esteja dentro da tolerância desejada.</p>
+        <h2>Implementação em C#</h2>
+        <pre><code>
+            using System;
 
-        double[,] Ax = { { B[0], A[0,1], A[0,2] }, { B[1], A[1,1], A[1,2] }, { B[2], A[2,1], A[2,2] } };
-        double[,] Ay = { { A[0,0], B[0], A[0,2] }, { A[1,0], B[1], A[1,2] }, { A[2,0], B[2], A[2,2] } };
-        double[,] Az = { { A[0,0], A[0,1], B[0] }, { A[1,0], A[1,1], B[1] }, { A[2,0], A[2,1], B[2] } };
+            class MetodoIterativo
+            {
+                static void Main()
+                {
+                    double[,] A = {
+                        { 5, 2, 1 },
+                        { -1, 4, 2 },
+                        { 2, -3, 10 }
+                    };
+                    double[] B = { 7, 3, -1 };
+                    double[] X0 = { -2.4, 5, 0.3 }; // Chute inicial fornecido
+                    double tol = 1e-2;
+                    int maxIter = 100;
+            
+                    Console.WriteLine("Resolvendo pelo Método de Jacobi:");
+                    MetodoJacobi(A, B, X0, tol, maxIter);
+            
+                    Console.WriteLine("\nResolvendo pelo Método de Gauss-Seidel:");
+                    MetodoGaussSeidel(A, B, X0, tol, maxIter);
+                }
+            
+                static void MetodoJacobi(double[,] A, double[] B, double[] X0, double tol, int maxIter)
+                {
+                    int n = B.Length;
+                    double[] X = new double[n];
+            
+                    for (int it = 0; it &lt; maxIter; it++)
+                    {
+                        double maxErro = 0;
+                        for (int i = 0; i &lt; n; i++)
+                        {
+                            double soma = B[i];
+                            for (int j = 0; j &lt; n; j++)
+                                if (i != j) soma -= A[i, j] * X0[j];
+            
+                            X[i] = soma / A[i, i];
+                            maxErro = Math.Max(maxErro, Math.Abs(X[i] - X0[i]));
+                        }
+            
+                        Array.Copy(X, X0, n);
+                        if (maxErro &lt; tol) break;
+                    }
+            
+                    for (int i = 0; i &lt; n; i++)
+                        Console.WriteLine($"x{i + 1} = {X[i]:F6}");
+                }
+            
+                static void MetodoGaussSeidel(double[,] A, double[] B, double[] X0, double tol, int maxIter)
+                {
+                    int n = B.Length;
+                    double[] X = (double[])X0.Clone();
+            
+                    for (int it = 0; it &lt; maxIter; it++)
+                    {
+                        double maxErro = 0;
+                        for (int i = 0; i &lt; n; i++)
+                        {
+                            double soma = B[i];
+                            for (int j = 0; j &lt; n; j++)
+                                if (i != j) soma -= A[i, j] * X[j];
+            
+                            double novoX = soma / A[i, i];
+                            maxErro = Math.Max(maxErro, Math.Abs(novoX - X[i]));
+                            X[i] = novoX;
+                        }
+            
+                        if (maxErro &lt; tol) break;
+                    }
+            
+                    for (int i = 0; i &lt; n; i++)
+                        Console.WriteLine($"x{i + 1} = {X[i]:F6}");
+                }
+            }
+            
+        </code></pre>
+    </section>
 
-        Console.WriteLine($"x1 = {Det(Ax) / d:F2}");
-        Console.WriteLine($"x2 = {Det(Ay) / d:F2}");
-        Console.WriteLine($"x3 = {Det(Az) / d:F2}");
-    }
-}
+    <section id="questao_5">
+        <h1>Questão 5</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>Resolvemos um sistema linear estimando os valores das incógnitas de forma independente a cada iteração, após um chute inicial e usamos as equações do sistema para atualizar cada variável, sempre considerando os valores antigos das demais, o processo é repetido até que as mudanças entre as iterações sejam pequenas o suficiente para garantir uma boa aproximação, com issochegamos à solução correta do sistema de forma gradual e sistemática.</p>
+        <h2>Implementação em C#</h2>
+        <pre><code>
+
+            class Jacobi
+            {
+                static void Main()
+                {
+                    double[,] A = { 
+                        { 10, 2, 1 },  
+                        { 1, 5, 1 },  
+                        { 2, 3, 10 }   
+                    };
+            
+                    double[] B = { 7, -8, 6 };
+                    double[] X = { 0.7, -1.6, 0.6 }; // chute 
+                    int n = B.Length, iteracoes = 100;
+                    double erro = 1e-2, maxErro;
+            
+                    for (int it = 0; it &lt; iteracoes; it++)
+                    {
+                        double[] novoX = new double[n];
+                        maxErro = 0;
+            
+                        for (int i = 0; i &lt; n; i++)
+                        {
+                            double soma = B[i];
+                            for (int j = 0; j &lt; n; j++)
+                                if (i != j) soma -= A[i, j] * X[j];
+            
+                            novoX[i] = soma / A[i, i];
+                            maxErro = Math.Max(maxErro, Math.Abs(novoX[i] - X[i]));
+                        }
+            
+                        X = (double[])novoX.Clone();
+                        if (maxErro &lt; erro) break;
+                    }
+            
+                    for (int i = 0; i &lt; n; i++)
+                        Console.WriteLine($"x{i + 1} = {X[i]:F6}");
+                }
+            }
+        </code></pre>
+    </section>
+
+    <section id="questao_6">
+        <h1>Questão 6</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>Utilizamos o método iterativo de Gauss-Seidel e começamos com uma estimativa inicial para as variáveis e para cada iteração, atualizamos seus valores com base nas equações do sistema, sempre usando os valores mais recentes disponíveis, o processo continua até que a diferença entre as iterações seja menor que a tolerância especificada, assim acabamos encontramos a solução aproximada do sistema, que corresponde aos valores esperados.</p>
+        <h2>Implementação em C#</h2>
+        <pre><code>
+            class Questao6
+            {
+                static void Main()
+                {
+                    double[,] A = { { 5, 1, 1 }, { 3, 4, 1 }, { 3, 3, 6 } };
+                    double[] B = { 5, 6, 0 }, X = { 0, 0, 0 };
+            
+                    Console.WriteLine("Questão 6 - Gauss-Seidel:");
+                    MetodoGaussSeidel(A, B, X, 1e-2, 100);
+                }
+            
+                static void MetodoGaussSeidel(double[,] A, double[] B, double[] X, double tol, int maxIter)
+                {
+                    int n = B.Length;
+                    for (int it = 0; it &lt; maxIter; it++)
+                    {
+                        double maxErro = 0;
+                        for (int i = 0; i &lt; n; i++)
+                        {
+                            double soma = B[i];
+                            for (int j = 0; j &lt; n; j++) if (i != j) soma -= A[i, j] * X[j];
+            
+                            double novoX = soma / A[i, i];
+                            maxErro = Math.Max(maxErro, Math.Abs(novoX - X[i]));
+                            X[i] = novoX;
+                        }
+                        if (maxErro &lt; tol) break;
+                    }
+            
+                    for (int i = 0; i &lt; n; i++) Console.WriteLine($"x{i + 1} = {X[i]:F6}");
+                }
+            }
+        </code></pre>
+    </section>
+
+    <section id="questao_7">
+        <h1>Questão 7</h1>
+        <br>
+        <h2>Explicação</h2>
+        <p>Para resolver essa questão, precisamos encontrar um polinômio de quarto grau que passe pelos cinco pontos fornecidos, ou seja, ao substituir cada valor de x na equação do polinômio, o resultado deve ser o valor correspondente de y, após isso formamos um sistema de cinco equações com cinco incógnitas. Para resolver esse sistema, usamos o método de Gauss-Seidel, que começa com uma estimativa inicial e ajusta os valores aos poucos até chegar a uma resposta precisa, então encontramos os coeficientes do polinômio que melhor se ajustam aos pontos dados.</p>
+        <h2>Implementação em C#</h2>
+        <pre><code>
+            using System;
+
+            class GaussSeidel
+            {
+                static void Main()
+                {
+                    // Matriz dos coeficientes
+                    double[,] A = {
+                        { Math.Pow(0,4), Math.Pow(0,3), Math.Pow(0,2), 0, 1 },  // x = 0, y = -1
+                        { Math.Pow(1,4), Math.Pow(1,3), Math.Pow(1,2), 1, 1 },  // x = 1, y = 1
+                        { Math.Pow(3,4), Math.Pow(3,3), Math.Pow(3,2), 3, 1 },  // x = 3, y = 3
+                        { Math.Pow(5,4), Math.Pow(5,3), Math.Pow(5,2), 5, 1 },  // x = 5, y = 2
+                        { Math.Pow(6,4), Math.Pow(6,3), Math.Pow(6,2), 6, 1 }   // x = 6, y = -2
+                    };
+            
+                    // Vetor dos termos independentes
+                    double[] B = { -1, 1, 3, 2, -2 };
+            
+                    // Valores iniciais
+                    double[] X = new double[5];
+                    double tol = 1e-6;
+                    int maxIter = 1000;
+                    int n = B.Length;
+            
+                    // Método de Gauss-Seidel
+                    for (int k = 0; k &lt; maxIter; k++)
+                    {
+                        double[] X_old = (double[])X.Clone();
+                        for (int i = 0; i &lt; n; i++)
+                        {
+                            double sum = B[i];
+                            for (int j = 0; j &lt; n; j++)
+                            {
+                                if (j != i)
+                                    sum -= A[i, j] * X[j];
+                            }
+                            X[i] = sum / A[i, i];
+                        }
+            
+                        // Verificar convergência
+                        double error = 0;
+                        for (int i = 0; i &lt; n; i++)
+                            error += Math.Abs(X[i] - X_old[i]);
+            
+                        if (error &lt; tol) break;
+                    }
+            
+                    // Exibir solução
+                    Console.WriteLine($"Polinômio encontrado: y(x) = {X[0]:F4}x^4 + {X[1]:F4}x^3 + {X[2]:F4}x^2 + {X[3]:F4}x + {X[4]:F4}");
+                }
+            }
+            
         </code></pre>
     </section>
 
@@ -145,7 +437,5 @@ class Cramer
             "Numerical Analysis" - Richard L. Burden, J. Douglas Faires
         </p>
     </section>
-
-    <footer>&copy;Inventors 2025</footer>
 </body>
 </html>
